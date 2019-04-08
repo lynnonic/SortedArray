@@ -375,7 +375,7 @@ extension SortedArray {
     }
 }
 
-fileprivate enum Match<Index: Comparable> {
+public enum Match<Index: Comparable> {
     case found(at: Index)
     case notFound(insertAt: Index)
 }
@@ -399,11 +399,11 @@ extension SortedArray {
     ///   there is no guarantee which of these is found.
     ///
     /// - Complexity: O(_log(n)_), where _n_ is the size of the array.
-    fileprivate func search(for element: Element) -> Match<Index> {
+    public func search(for element: Element) -> Match<Index> {
         return search(for: element, in: startIndex ..< endIndex)
     }
 
-    fileprivate func search(for element: Element, in range: Range<Index>) -> Match<Index> {
+    public func search(for element: Element, in range: Range<Index>) -> Match<Index> {
         guard let middle = range.middle else { return .notFound(insertAt: range.upperBound) }
         switch compare(element, self[middle]) {
         case .orderedDescending:
